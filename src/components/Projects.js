@@ -1,226 +1,132 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Globe2, Palette, Play, X } from "lucide-react";
 
 const projects = [
   {
+    type: "website",
     name: "SIB UHAMKA",
-    description:
-      "Sistem Informasi Beasiswa Universitas Muhammadiyah Prof. Dr. Hamka yang digunakan untuk mengelola pendaftaran, seleksi, verifikasi berkas, serta monitoring penerima beasiswa secara terintegrasi.",
+    description: "Sistem informasi beasiswa untuk mengelola pendaftaran, seleksi, verifikasi, dan monitoring penerima secara terintegrasi.",
     images: [
-      "/images/sib-uhamka.png",
-      "/images/sib-uhamka.png",
-      "/images/sib-uhamka.png",
-      "/images/sib-uhamka.png",
+      "/images/projects/website/sib-uhamka/sib-uhamka1.jpeg",
+      "/images/projects/website/sib-uhamka/sib-uhamka2.jpeg",
+      "/images/projects/website/sib-uhamka/sib-uhamka3.jpeg",
+      "/images/projects/website/sib-uhamka/sib-uhamka4.jpeg",
     ],
-    tools: "Laravel, PHP, Bootstrap, phpMyAdmin",
+    tools: ["Laravel", "PHP", "Bootstrap", "MySQL"],
   },
   {
-    name: "Nolibo",
-    description:
-      "Platform perpustakaan digital berbasis web yang memfasilitasi pencarian buku, peminjaman, pengelolaan koleksi, serta manajemen data pengguna secara online.",
-    images: [
-      "/images/nolibo.png",
-      "/images/nolibo.png",
-      "/images/nolibo.png",
-      "/images/nolibo.png",
-    ],
-    tools: "Django, Python, Bootstrap, PostgreSQL",
-  },
-  {
+    type: "website",
     name: "Tally HBT",
-    description:
-      "Sistem pencatatan dan monitoring waktu curah cair berbasis web untuk mendukung pencatatan operasional, pelaporan, serta analisis data secara akurat dan efisien.",
+    description: "Sistem pencatatan dan monitoring waktu curah cair untuk mendukung operasional, pelaporan, dan analisis data.",
     images: [
-      "/images/Tally-HBT/tally-hbt1.jpeg",
-      "/images/Tally-HBT/tally-hbt2.jpeg",
-      "/images/Tally-HBT/tally-hbt3.jpeg",
-      "/images/Tally-HBT/tally-hbt4.jpeg",
+      "/images/projects/website/tally-hbt/tally-hbt1.jpeg",
+      "/images/projects/website/tally-hbt/tally-hbt2.jpeg",
+      "/images/projects/website/tally-hbt/tally-hbt3.jpeg",
+      "/images/projects/website/tally-hbt/tally-hbt4.jpeg",
     ],
-    tools: "Laravel, PHP, Bootstrap, phpMyAdmin",
+    tools: ["Laravel", "PHP", "Bootstrap", "MySQL"],
+  },
+  {
+    type: "design",
+    name: "Portfolio UI Design",
+    description: "Eksplorasi desain antarmuka portofolio personal dengan susunan informasi yang sederhana, bersih, dan mudah dipindai.",
+    images: ["/images/projects/design/portfolio-ui/portfolio-ui.jpeg"],
+    tools: ["UI Design", "Responsive Layout", "Visual Design"],
   },
 ];
 
-const slideVariants = {
-  enter: (direction) => ({
-    x: direction > 0 ? "110%" : "-110%",
-  }),
-  center: {
-    x: "0%",
-  },
-  exit: (direction) => ({
-    x: direction > 0 ? "-110%" : "110%",
-  }),
-};
+const filters = [
+  ["website", "Website", Globe2],
+  ["design", "Design", Palette],
+];
 
-const Projects = () => {
-  const [[activeIndex, direction], setActiveIndex] = useState([0, 1]);
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [cardHeight, setCardHeight] = useState(520);
-  const cardRef = React.useRef(null);
-  const project = projects[activeIndex];
-
-  const handlePrev = () => {
-    setActiveIndex([
-      (activeIndex - 1 + projects.length) % projects.length,
-      -1,
-    ]);
-  };
-
-  const handleNext = () => {
-    setActiveIndex([
-      (activeIndex + 1) % projects.length,
-      1,
-    ]);
-  };
-
-  const handleImageClick = (imageSrc) => {
-    setSelectedImage(imageSrc);
-  };
-
-  const handleCloseModal = () => {
-    setSelectedImage(null);
-  };
+export default function Projects() {
+  const [filter, setFilter] = useState("website");
+  const [selected, setSelected] = useState(null);
+  const [activeImage, setActiveImage] = useState("");
 
   useEffect(() => {
-    const updateHeight = () => {
-      if (cardRef.current) {
-        const height = cardRef.current.offsetHeight;
-        setCardHeight(Math.max(height, 520));
-      }
-    };
-    
-    updateHeight();
-    const timeoutId = setTimeout(updateHeight, 100);
-    
-    return () => clearTimeout(timeoutId);
-  }, [activeIndex, project]);
+    if (selected) setActiveImage(selected.images[0]);
+  }, [selected]);
 
-  useEffect(() => {
-    const handleEscape = (e) => {
-      if (e.key === "Escape") {
-        handleCloseModal();
-      }
-    };
-
-    if (selectedImage) {
-      document.addEventListener("keydown", handleEscape);
-      document.body.style.overflow = "hidden";
-    }
-
-    return () => {
-      document.removeEventListener("keydown", handleEscape);
-      document.body.style.overflow = "unset";
-    };
-  }, [selectedImage]);
+  const filteredProjects = projects.filter((project) => project.type === filter);
 
   return (
-    <section id="projects" className="py-16 bg-[#F7F7F7] overflow-hidden">
-      <h2 className="text-4xl font-bold text-center text-[#4F7C74] mb-10">
-        PROJECT
-      </h2>
-
-      <div className="relative max-w-5xl mx-auto">
-        <button
-          onClick={handlePrev}
-          className="absolute left-[-56px] top-1/2 -translate-y-1/2 text-[#4F7C74] text-4xl font-bold z-10"
-        >
-          ‹
-        </button>
-
-        <div className="relative px-8" style={{ minHeight: `${cardHeight}px` }}>
-          <AnimatePresence initial={false} custom={direction}>
-            <motion.div
-              key={activeIndex}
-              custom={direction}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{
-                x: { type: "spring", stiffness: 120, damping: 24 },
-              }}
-              className="absolute inset-x-4 top-0 bg-[#4F7C74] rounded-2xl p-6 shadow-xl"
-            >
-              <div ref={cardRef}>
-                <h3 className="text-center text-white font-semibold text-xl mb-4">
-                  {project.name}
-                </h3>
-
-              <img
-                src={project.images[0]}
-                alt={project.name}
-                onClick={() => handleImageClick(project.images[0])}
-                className="w-full h-auto object-contain rounded-lg mb-4 cursor-pointer hover:opacity-90 transition-opacity"
-              />
-
-              <div className="grid grid-cols-3 gap-3 mb-3">
-                {project.images.slice(1).map((img, idx) => (
-                  <img
-                    key={idx}
-                    src={img}
-                    alt=""
-                    onClick={() => handleImageClick(img)}
-                    className="w-full h-auto object-contain rounded-lg cursor-pointer hover:opacity-90 transition-opacity"
-                  />
-                ))}
-              </div>
-
-              <p className="text-center text-white text-base leading-relaxed mb-1">
-                {project.description}
-              </p>
-
-              <p className="text-center text-white text-sm font-medium">
-                Tools : {project.tools}
-              </p>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        <button
-          onClick={handleNext}
-          className="absolute right-[-56px] top-1/2 -translate-y-1/2 text-[#4F7C74] text-4xl font-bold z-10"
-        >
-          ›
-        </button>
-      </div>
-
-      <AnimatePresence>
-        {selectedImage && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={handleCloseModal}
-            className="fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4"
-          >
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              onClick={(e) => e.stopPropagation()}
-              className="relative flex items-center justify-center max-w-[95vw] max-h-[95vh] w-auto h-auto"
-            >
-              <button
-                onClick={handleCloseModal}
-                className="absolute -top-12 right-0 text-white text-4xl font-bold hover:text-gray-300 transition-colors z-10"
-                aria-label="Close modal"
-              >
-                ×
+    <section id="projects" className="page-section alt">
+      <div className="section-inner">
+        <div className="project-heading">
+          <div className="section-head">
+            <span className="eyebrow">04 · Proyek</span>
+            <h2 className="section-title">Pengembangan</h2>
+          </div>
+          <div className="project-tabs" role="tablist" aria-label="Kategori proyek">
+            {filters.map(([id, label, Icon]) => (
+              <button key={id} className={`project-tab ${filter === id ? "active" : ""}`} onClick={() => setFilter(id)}>
+                <Icon size={16} /> {label}
               </button>
-              <img
-                src={selectedImage}
-                alt="Project preview"
-                className="max-w-full max-h-[95vh] w-auto h-auto rounded-lg shadow-2xl object-contain"
-                style={{ width: 'auto', height: 'auto' }}
-              />
+            ))}
+          </div>
+        </div>
+        <motion.div className="project-grid" layout>
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project) => (
+              <motion.article
+                layout
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 12 }}
+                className="card project-card"
+                key={project.name}
+                onClick={() => setSelected(project)}
+              >
+                <div className="project-cover"><img src={project.images[0]} alt={project.name} /></div>
+                <div className="project-body">
+                  <div className="project-title-row">
+                    <h3>{project.name}</h3>
+                    <button className="mini-play" aria-label={`Lihat ${project.name}`}><Play size={15} fill="currentColor" /></button>
+                  </div>
+                  <p>{project.description}</p>
+                  <div className="tag-list">{project.tools.map((tool) => <span className="tag" key={tool}>{tool}</span>)}</div>
+                </div>
+              </motion.article>
+            ))}
+          </AnimatePresence>
+        </motion.div>
+      </div>
+      <AnimatePresence>
+        {selected && (
+          <motion.div className="modal-backdrop" onClick={() => setSelected(null)} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+            <motion.div className="project-modal" onClick={(event) => event.stopPropagation()} initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 30, opacity: 0 }}>
+              <div className="modal-image-stage">
+                <AnimatePresence mode="wait">
+                  <motion.img key={activeImage} className="modal-cover" src={activeImage} alt={selected.name} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} />
+                </AnimatePresence>
+              </div>
+              <div className="modal-body">
+                <div className="project-title-row">
+                  <div>
+                    <span className="modal-category">{selected.type === "website" ? "Website Project" : "Design Project"}</span>
+                    <h2>{selected.name}</h2>
+                  </div>
+                  <button className="mini-play" onClick={() => setSelected(null)} aria-label="Tutup"><X size={17} /></button>
+                </div>
+                <p>{selected.description}</p>
+                <div className="tag-list">{selected.tools.map((tool) => <span className="tag" key={tool}>{tool}</span>)}</div>
+                {selected.images.length > 1 && (
+                  <div className="modal-gallery">
+                    {selected.images.map((image, index) => (
+                      <button className={`gallery-thumb ${activeImage === image ? "active" : ""}`} key={image} onClick={() => setActiveImage(image)}>
+                        <img src={image} alt={`${selected.name} tampilan ${index + 1}`} />
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
     </section>
   );
-};
-
-export default Projects;
+}

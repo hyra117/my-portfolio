@@ -1,60 +1,88 @@
 import React from "react";
-import { motion } from "framer-motion";
 
 const experiences = [
   {
-    title: "Web Developer (Internship)",
-    company: "PTP Nonpetikemas",
-    date: "Jan 2025 – Jan 2026",
-    image: "/images/PTP Non.png",
+    role: "IT Governance · Contract",
+    company: "PT Link Net Tbk",
+    date: "Mar 2026 - Sekarang",
+    mark: "LN",
+    description:
+      "Mengoordinasikan dokumen kepatuhan dan laporan TPRM, serta mendukung implementasi PAM dan pengelolaan kontrol keamanan informasi.",
   },
   {
-    title: "Digital Communication (Freelance)",
-    company: "MDMC Indonesia",
-    date: "Nov 2024 – Jan 2025",
-    image: "/images/Mdmc.png",
+    role: "Frontend Developer Intern",
+    company: "PT Bank Negara Indonesia (Persero) Tbk",
+    date: "Jan 2026 - Mar 2026",
+    mark: "BNI",
+    description:
+      "Mengembangkan fitur dan antarmuka pengguna aplikasi web, mengimplementasikan desain yang responsif dan interaktif, serta mengoptimalkan pengalaman pengguna.",
   },
   {
-    title: "System Analyst (Internship)",
-    company: "PT. Kalbe Farma. Tbk.",
-    date: "Feb 2024 – Jun 2024",
-    image: "/images/Kalbe.png",
+    role: "Information System Intern",
+    company: "PTP Non Petikemas · Pelindo Group",
+    date: "Jan 2025 - Jan 2026",
+    mark: "PTP",
+    description:
+      "Mendukung pengembangan sistem informasi operasional, penyusunan tata kelola TI, serta pengelolaan dokumentasi dan administrasi data untuk kebutuhan bisnis.",
   },
   {
-    title: "Web Developer (Internship)",
+    role: "System Analyst Intern · MSIB Batch 5",
+    company: "PT Kalbe Farma Tbk",
+    date: "Feb 2024 - Jun 2024",
+    mark: "Kalbe",
+    description:
+      "Menganalisis kebutuhan sistem, menyusun dokumentasi fungsional, serta mendukung proses implementasi dan validasi sistem sesuai kebutuhan operasional.",
+  },
+  {
+    role: "Full Stack Developer Intern",
     company: "BPTI UHAMKA",
-    date: "Apr 2023 – Jul 2023",
-    image: "/images/bpti.jpg",
+    date: "Apr 2023 - Jul 2023",
+    mark: "BPTI",
+    description:
+      "Mengembangkan aplikasi berbasis web, merancang struktur data dan alur sistem, serta mendukung peningkatan visibilitas dan aksesibilitas platform digital.",
   },
 ];
 
-const Experience = () => {
-  return (
-    <section id="experience" className="py-7 bg-[#F7F7F7] flex justify-center">
-      <div className="container mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-10 text-[#27445D]">PENGALAMAN</h2>
+const experiencePhotos = [
+  ["/images/pengalaman/1.png", "Dokumentasi pengalaman profesional"],
+  ["/images/pengalaman/2.png", "Kegiatan bersama tim profesional"],
+];
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-center">
-          {experiences.map((exp, index) => (
-            <motion.div
-              key={index}
-              className="bg-[#497D74] p-8 shadow-lg rounded-xl flex flex-col items-center text-center cursor-pointer transition duration-300"
-              whileHover={{ y: -10, boxShadow: "0px 15px 30px rgba(0, 0, 0, 0.3)" }}
-            >
-              <img
-                src={exp.image}
-                alt={exp.company}
-                className="w-24 h-24 object-contain mb-6 rounded-full border-4 border-white bg-white p-2"
-              />
-              <h3 className="text-xl font-semibold text-white">{exp.title}</h3>
-              <p className="text-white text-lg">{exp.company}</p>
-              <p className="text-white text-md">{exp.date}</p>
-            </motion.div>
+export default function Experience() {
+  return (
+    <section id="experience" className="page-section">
+      <div className="section-inner">
+        <div className="section-head">
+          <span className="eyebrow">02 · Pengalaman</span>
+          <h2 className="section-title">Karier</h2>
+        </div>
+        <div className="experience-grid">
+          {experiences.map((experience, index) => (
+            <article className={`card experience-card ${index === 0 ? "featured" : ""}`} key={`${experience.company}-${experience.role}`}>
+              <div className="experience-card-head">
+                <span className={`company-mark company-mark-${index + 1}`} aria-label={experience.company}>
+                  {experience.mark}
+                </span>
+                <span className="experience-number">{String(index + 1).padStart(2, "0")}</span>
+              </div>
+              <div className="experience-card-body">
+                <span className="date">{experience.date}</span>
+                <h3>{experience.role}</h3>
+                <div className="company">{experience.company}</div>
+                <p className="description">{experience.description}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+        <div className="experience-gallery">
+          {experiencePhotos.map(([image, label]) => (
+            <figure key={image}>
+              <img src={image} alt={label} />
+              <figcaption>{label}</figcaption>
+            </figure>
           ))}
         </div>
       </div>
     </section>
   );
-};
-
-export default Experience;
+}
