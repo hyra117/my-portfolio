@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96">
+  <defs>
+    <linearGradient id="bg" x1="16" y1="10" x2="82" y2="88" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3d8bfd"/>
+      <stop offset=".55" stop-color="#22c7d8"/>
+      <stop offset="1" stop-color="#8a7cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="96" height="96" rx="28" fill="url(#bg)"/>
+  <circle cx="74" cy="22" r="10" fill="#ffffff" opacity=".28"/>
+  <text x="48" y="58" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#ffffff">RP</text>
+</svg>

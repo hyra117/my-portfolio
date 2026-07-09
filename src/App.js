@@ -62,7 +62,7 @@ export default function App() {
           <Skills />
         </main>
       </div>
-      <footer className="footer">© 2026 Rachma Pavita · Dibangun dengan React</footer>
+      <footer className="footer">© 2026 Rachma Pavita · Portfolio</footer>
     </div>
   );
 }
