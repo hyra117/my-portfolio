@@ -49,20 +49,14 @@ const experiences = [
   },
 ];
 
-const experiencePhotos = ["/images/pengalaman/1.png", "/images/pengalaman/2.png"];
-
 export default function Experience() {
   return (
     <section id="experience" className="page-section">
       <div className="section-inner">
         <div className="section-head">
           <span className="eyebrow">02 · Pengalaman</span>
-          <h2 className="section-title">Karier profesional</h2>
-          <p className="section-copy">
-            Pengalaman di bidang tata kelola TI, pengembangan sistem, analisis kebutuhan, dan pengembangan aplikasi web.
-          </p>
+          <h2 className="section-title">Karier</h2>
         </div>
-
         <div className="experience-grid">
           {experiences.map((experience, index) => (
             <article className={`card experience-card ${index === 0 ? "featured" : ""}`} key={`${experience.company}-${experience.role}`}>
@@ -98,13 +92,6 @@ export default function Experience() {
           ))}
         </div>
 
-        <div className="experience-gallery">
-          {experiencePhotos.map((image) => (
-            <figure key={image}>
-              <img src={image} alt="Dokumentasi pengalaman profesional" />
-            </figure>
-          ))}
-        </div>
       </div>
     </section>
   );

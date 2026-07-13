@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import "./App.css";
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
@@ -8,58 +9,40 @@ import Organization from "./components/Organization";
 import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 
-const sectionIds = ["home", "about", "experience", "organization", "projects", "skills"];
+const pages = {
+  home: Header,
+  about: About,
+  experience: Experience,
+  organization: Organization,
+  projects: Projects,
+  skills: Skills,
+};
 
 export default function App() {
   const [activeSection, setActiveSection] = useState("home");
+  const ActivePage = pages[activeSection] || Header;
 
-  useEffect(() => {
-    let ticking = false;
-
-    const updateActiveSection = () => {
-      const marker = window.scrollY + window.innerHeight * 0.38;
-      let current = sectionIds[0];
-
-      sectionIds.forEach((id) => {
-        const section = document.getElementById(id);
-        if (section && section.offsetTop <= marker) current = id;
-      });
-
-      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 8) {
-        current = sectionIds[sectionIds.length - 1];
-      }
-
-      setActiveSection(current);
-      ticking = false;
-    };
-
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(updateActiveSection);
-        ticking = true;
-      }
-    };
-
-    updateActiveSection();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
-    };
-  }, []);
+  const changePage = (id) => {
+    setActiveSection(id);
+  };
 
   return (
-    <div className="app-shell">
-      <Navbar activeSection={activeSection} setActiveSection={setActiveSection} />
+    <div className="app-shell single-page-shell">
+      <Navbar activeSection={activeSection} setActiveSection={changePage} />
       <div className="content-shell">
-        <main>
-          <Header />
-          <About />
-          <Experience />
-          <Organization />
-          <Projects />
-          <Skills />
+        <main className="page-switcher">
+          <AnimatePresence mode="wait">
+            <motion.div
+              className="page-view"
+              key={activeSection}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.28, ease: "easeOut" }}
+            >
+              <ActivePage onNavigate={changePage} />
+            </motion.div>
+          </AnimatePresence>
         </main>
       </div>
       <footer className="footer">© 2026 Rachma Pavita · Portfolio</footer>

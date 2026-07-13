@@ -16,7 +16,6 @@ export default function Navbar({ activeSection, setActiveSection }) {
   const navigate = (id) => {
     setActiveSection(id);
     setOpen(false);
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (

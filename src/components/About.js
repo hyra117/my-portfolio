@@ -5,6 +5,7 @@ const photos = [
   ["/images/photo/1.jpg", "Momen kelulusan"],
   ["/images/photo/2.png", "Aktivitas kampus"],
   ["/images/photo/3.png", "Perjalanan organisasi"],
+  ["/images/photo/4.jpeg", "Dokumentasi kegiatan"],
 ];
 
 const contacts = [
@@ -26,16 +27,11 @@ export default function About() {
         <div className="about-simple-grid">
           <article className="about-intro">
             <p>
-              Saya Rachma Pavita berfokus pada pengembangan aplikasi web dengan performa optimal 
-              dan penerapan tata kelola TI. Kompetensi utama meliputi transformasi 
-              kebutuhan bisnis menjadi solusi digital yang fungsional, aman, dan memiliki 
-              arsitektur kode yang terstruktur.
+             Lulusan Sarjana Teknik Informatika dengan ketertarikan pada pengembangan aplikasi berbasis web dan implementasi solusi digital yang mendukung kebutuhan operasional maupun bisnis. Lingkup pekerjaan meliputi proses pengembangan aplikasi dari tahap identifikasi kebutuhan, perancangan sistem, pengembangan, pengujian, implementasi, hingga pemeliharaan aplikasi sebagai bagian dari siklus pengembangan perangkat lunak.
             </p>
             <p>
-              Memiliki pengalaman dalam pengembangan perangkat lunak dengan pendekatan kerja yang terstruktur, 
-              teliti, dan berorientasi pada standar industri. Didukung kemampuan komunikasi teknis yang baik, 
-              adaptif terhadap perkembangan teknologi, serta mampu bekerja sama secara efektif dalam tim pengembang.
-            </p>
+Memiliki ketertarikan pada pengembangan perangkat lunak yang menghasilkan solusi digital yang fungsional, mudah digunakan, dan berkelanjutan, serta mendukung peningkatan kualitas layanan, efisiensi operasional, dan transformasi proses bisnis di lingkungan organisasi.            </p>
+
           </article>
 
           <div className="about-photo-grid">
