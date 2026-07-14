@@ -3803,3 +3803,590 @@ body {
   position: relative !important;
   z-index: 20 !important;
 }
+
+/* Keep About content fully inside viewport */
+.single-page-shell #about.page-section {
+  height: calc(100vh - 42px) !important;
+  padding-top: 108px !important;
+  padding-bottom: 16px !important;
+  overflow: hidden !important;
+}
+
+.single-page-shell #about .section-inner {
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+}
+
+.single-page-shell #about .section-head {
+  margin-bottom: 14px !important;
+  flex: 0 0 auto !important;
+}
+
+.single-page-shell #about .section-title {
+  font-size: clamp(2rem, 3.7vw, 3.35rem) !important;
+  line-height: 1 !important;
+}
+
+.single-page-shell #about .about-simple-grid {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  grid-template-columns: minmax(0, 1.36fr) minmax(250px, 390px) !important;
+  gap: 24px !important;
+  align-items: stretch !important;
+}
+
+.single-page-shell #about .about-intro {
+  min-height: 0 !important;
+  padding: clamp(24px, 2.5vw, 34px) clamp(28px, 3.6vw, 48px) !important;
+}
+
+.single-page-shell #about .about-intro p {
+  font-size: clamp(14px, 1.12vw, 16px) !important;
+  line-height: 1.62 !important;
+}
+
+.single-page-shell #about .about-intro p + p {
+  margin-top: 14px !important;
+}
+
+.single-page-shell #about .about-photo-grid {
+  align-content: stretch !important;
+  gap: 12px !important;
+}
+
+.single-page-shell #about .about-photo {
+  max-height: none !important;
+  min-height: 0 !important;
+}
+
+.single-page-shell #about .about-contact {
+  flex: 0 0 auto !important;
+  margin-top: 14px !important;
+  padding: 14px 16px !important;
+  border-radius: 18px !important;
+  grid-template-columns: .55fr 1.45fr !important;
+  gap: 14px !important;
+}
+
+.single-page-shell #about .about-contact h3 {
+  margin-top: 4px !important;
+  font-size: 15px !important;
+}
+
+.single-page-shell #about .about-contact-links {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 8px !important;
+}
+
+.single-page-shell #about .contact-chip {
+  padding: 8px 10px !important;
+  gap: 8px !important;
+  font-size: 10px !important;
+  min-height: 42px !important;
+}
+
+.single-page-shell #about .contact-chip small {
+  font-size: 8px !important;
+}
+
+@media (max-height: 820px) and (min-width: 901px) {
+  .single-page-shell #about.page-section {
+    padding-top: 96px !important;
+    padding-bottom: 12px !important;
+  }
+
+  .single-page-shell #about .section-head {
+    margin-bottom: 10px !important;
+  }
+
+  .single-page-shell #about .section-title {
+    font-size: clamp(1.75rem, 3.1vw, 2.65rem) !important;
+  }
+
+  .single-page-shell #about .about-intro {
+    padding: 20px 32px !important;
+  }
+
+  .single-page-shell #about .about-intro p {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+  }
+
+  .single-page-shell #about .about-contact {
+    margin-top: 10px !important;
+    padding: 10px 12px !important;
+  }
+
+  .single-page-shell #about .contact-chip {
+    min-height: 36px !important;
+    padding: 6px 8px !important;
+  }
+}
+
+.about-inline-contact {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 10px !important;
+  margin-top: 22px !important;
+  padding-top: 18px !important;
+  border-top: 1px solid rgba(61, 139, 253, .14) !important;
+}
+
+.single-page-shell #about .about-inline-contact {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+.about-inline-contact .contact-chip {
+  min-height: 44px !important;
+  padding: 9px 11px !important;
+  border-radius: 14px !important;
+  background: rgba(255, 255, 255, .72) !important;
+}
+
+.about-inline-contact .contact-chip small {
+  font-size: 8px !important;
+}
+
+.about-contact {
+  display: none !important;
+}
+
+.single-page-shell #about .about-simple-grid {
+  flex: 1 1 auto !important;
+}
+
+.single-page-shell #about .about-intro {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+}
+
+.single-page-shell #about .about-inline-contact {
+  margin-top: 22px !important;
+  padding-top: 18px !important;
+}
+
+.single-page-shell #about .about-inline-contact .contact-chip {
+  min-height: 48px !important;
+  padding: 10px 12px !important;
+  font-size: 12px !important;
+}
+
+.single-page-shell #about .about-inline-contact .contact-chip small {
+  font-size: 9px !important;
+}
+
+@media (max-height: 820px) and (min-width: 901px) {
+  .single-page-shell #about .about-inline-contact {
+    gap: 8px !important;
+    margin-top: 16px !important;
+    padding-top: 14px !important;
+  }
+
+  .single-page-shell #about .about-inline-contact .contact-chip {
+    min-height: 42px !important;
+    padding: 8px 10px !important;
+    font-size: 10.5px !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .about-inline-contact {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Match about description height with photo grid */
+.single-page-shell #about .about-simple-grid {
+  align-items: start !important;
+}
+
+.single-page-shell #about .about-intro {
+  min-height: 0 !important;
+  height: fit-content !important;
+  align-self: start !important;
+  padding-top: clamp(24px, 2.7vw, 38px) !important;
+  padding-bottom: clamp(24px, 2.7vw, 38px) !important;
+}
+
+.single-page-shell #about .about-photo-grid {
+  align-self: start !important;
+}
+
+.single-page-shell #about .about-simple-grid {
+  align-items: start !important;
+}
+
+.single-page-shell #about .about-intro {
+  height: auto !important;
+  min-height: clamp(410px, 56vh, 500px) !important;
+  align-self: start !important;
+  justify-content: space-between !important;
+  padding: clamp(28px, 3vw, 40px) clamp(32px, 3.7vw, 50px) !important;
+}
+
+.about-description-text {
+  display: block !important;
+}
+
+.about-description-text p + p,
+.single-page-shell #about .about-description-text p + p {
+  margin-top: 16px !important;
+}
+
+/* Safe responsive layer */
+@media (max-width: 900px) {
+  .single-page-shell {
+    height: auto !important;
+    min-height: 100vh !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    display: block !important;
+  }
+
+  .single-page-shell .content-shell,
+  .single-page-shell .page-switcher,
+  .single-page-shell .page-view,
+  .single-page-shell .hero,
+  .single-page-shell .page-section,
+  .single-page-shell .section-inner {
+    height: auto !important;
+    max-height: none !important;
+    min-height: auto !important;
+    overflow: visible !important;
+  }
+
+  .top-navbar {
+    inset: 12px 14px auto !important;
+    min-height: 64px !important;
+    padding: 10px 12px !important;
+    border-radius: 22px !important;
+  }
+
+  .navbar-menu {
+    background: rgba(255, 255, 255, .96) !important;
+    border-color: rgba(61, 139, 253, .18) !important;
+    box-shadow: 0 18px 34px rgba(16, 42, 67, .12) !important;
+  }
+
+  .navbar-item {
+    color: #496781 !important;
+  }
+
+  .hero,
+  .single-page-shell .hero {
+    padding: 112px 20px 48px !important;
+  }
+
+  .hero-inner,
+  .single-page-shell .hero-inner {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+    transform: none !important;
+  }
+
+  .hero h1,
+  .single-page-shell .hero h1 {
+    font-size: clamp(3rem, 15vw, 4.8rem) !important;
+  }
+
+  .hero-lead,
+  .single-page-shell .hero-lead {
+    font-size: 15px !important;
+    line-height: 1.65 !important;
+    text-align: left !important;
+  }
+
+  .hero-actions {
+    gap: 10px !important;
+  }
+
+  .primary-btn,
+  .secondary-btn {
+    min-height: 44px !important;
+    padding: 0 16px !important;
+    font-size: 13px !important;
+  }
+
+  .hero-meta,
+  .single-page-shell .hero-meta {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+
+  .hero-meta > div,
+  .single-page-shell .hero-meta > div {
+    padding: 12px !important;
+  }
+
+  .portrait-wrap,
+  .single-page-shell .portrait-wrap {
+    width: min(280px, 76vw) !important;
+    margin: 0 auto !important;
+  }
+
+  .portrait,
+  .single-page-shell .portrait {
+    width: 100% !important;
+    max-height: none !important;
+  }
+
+  .page-section,
+  .page-section.alt,
+  .single-page-shell #about.page-section,
+  .single-page-shell #experience.page-section,
+  .single-page-shell #organization.page-section,
+  .single-page-shell #projects.page-section,
+  .single-page-shell #skills.page-section {
+    padding: 104px 18px 42px !important;
+  }
+
+  .section-title,
+  .single-page-shell #about .section-title,
+  .single-page-shell #organization .section-title {
+    font-size: clamp(2rem, 11vw, 3rem) !important;
+  }
+
+  .about-simple-grid,
+  .single-page-shell #about .about-simple-grid {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+
+  .about-intro,
+  .single-page-shell #about .about-intro {
+    min-height: auto !important;
+    padding: 24px 22px !important;
+  }
+
+  .about-intro p,
+  .single-page-shell #about .about-intro p {
+    font-size: 14px !important;
+    line-height: 1.65 !important;
+  }
+
+  .about-inline-contact,
+  .single-page-shell #about .about-inline-contact {
+    grid-template-columns: 1fr !important;
+    margin-top: 18px !important;
+  }
+
+  .about-photo-grid,
+  .single-page-shell #about .about-photo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    max-width: none !important;
+  }
+
+  .about-photo,
+  .single-page-shell #about .about-photo {
+    max-height: none !important;
+  }
+
+  .experience-grid,
+  .organization-list,
+  .project-grid,
+  .skill-groups,
+  .certification-grid,
+  .single-page-shell .project-grid,
+  .single-page-shell #organization .organization-list {
+    grid-template-columns: 1fr !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    gap: 14px !important;
+  }
+
+  .experience-card,
+  .single-page-shell #organization .organization-item,
+  .project-card,
+  .single-page-shell .project-card,
+  .skill-group,
+  .certification-card {
+    min-height: auto !important;
+  }
+
+  .experience-card-header {
+    display: grid !important;
+    gap: 14px !important;
+  }
+
+  .experience-side-meta {
+    justify-items: start !important;
+    min-width: 0 !important;
+  }
+
+  .single-page-shell .project-cover {
+    height: 180px !important;
+  }
+
+  .modal-backdrop {
+    padding: 12px !important;
+  }
+
+  .project-modal {
+    width: calc(100vw - 24px) !important;
+    height: 86vh !important;
+    border-radius: 18px !important;
+  }
+
+  .modal-image-stage {
+    height: 260px !important;
+    min-height: 260px !important;
+  }
+
+  .modal-body {
+    padding: 20px !important;
+  }
+
+  .footer,
+  .single-page-shell .footer {
+    min-height: auto !important;
+    padding: 14px 18px !important;
+    font-size: 11px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-brand strong {
+    font-size: 13px !important;
+  }
+
+  .hero-meta,
+  .single-page-shell .hero-meta {
+    grid-template-columns: 1fr !important;
+  }
+
+  .hero-actions {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  .primary-btn,
+  .secondary-btn {
+    width: 100% !important;
+  }
+
+  .about-photo-grid,
+  .single-page-shell #about .about-photo-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+
+  .project-title-row,
+  .modal-title-actions {
+    align-items: flex-start !important;
+  }
+}
+
+/* Align About spacing with other pages */
+.single-page-shell #about.page-section {
+  padding-top: 122px !important;
+}
+
+@media (max-height: 820px) and (min-width: 901px) {
+  .single-page-shell #about.page-section {
+    padding-top: 108px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .single-page-shell #about.page-section {
+    padding-top: 104px !important;
+  }
+}
+
+.single-page-shell #about.page-section {
+  padding-top: 138px !important;
+}
+
+@media (max-height: 820px) and (min-width: 901px) {
+  .single-page-shell #about.page-section {
+    padding-top: 122px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .single-page-shell #about.page-section {
+    padding-top: 112px !important;
+  }
+}
+
+.single-page-shell #about .about-intro p {
+  font-size: clamp(14px, 1.08vw, 16px) !important;
+  line-height: 1.62 !important;
+}
+
+.single-page-shell #about .about-inline-contact {
+  margin-top: 22px !important;
+}
+
+.single-page-shell #about .about-inline-contact .contact-chip {
+  min-height: 46px !important;
+  font-size: 11px !important;
+}
+
+.single-page-shell #about .about-photo-grid {
+  height: auto !important;
+  align-self: start !important;
+}
+
+.single-page-shell #about .about-photo {
+  height: auto !important;
+  max-height: 230px !important;
+}
+
+@media (max-height: 820px) and (min-width: 901px) {
+  .single-page-shell #about .about-intro {
+    min-height: clamp(350px, 52vh, 430px) !important;
+    padding: 22px 34px !important;
+  }
+
+  .single-page-shell #about .about-intro p {
+    font-size: 13px !important;
+    line-height: 1.48 !important;
+  }
+
+  .single-page-shell #about .about-photo {
+    max-height: 190px !important;
+  }
+}
+
+.single-page-shell #about .about-intro {
+  min-height: clamp(410px, 56vh, 500px) !important;
+  padding-top: clamp(30px, 3.2vw, 44px) !important;
+  padding-bottom: clamp(30px, 3.2vw, 44px) !important;
+}
+
+.single-page-shell #about .about-intro p {
+  font-size: clamp(15px, 1.18vw, 17px) !important;
+  line-height: 1.72 !important;
+}
+
+.about-photo figcaption,
+.single-page-shell #about .about-photo figcaption {
+  display: none !important;
+}
+
+.single-page-shell #about .about-inline-contact {
+  margin-top: 26px !important;
+  align-self: stretch !important;
+}
+
+@media (max-height: 820px) and (min-width: 901px) {
+  .single-page-shell #about .about-intro {
+    min-height: clamp(350px, 52vh, 430px) !important;
+    padding-top: 28px !important;
+    padding-bottom: 28px !important;
+  }
+
+  .single-page-shell #about .about-intro p {
+    font-size: 14px !important;
+    line-height: 1.58 !important;
+  }
+
+  .single-page-shell #about .about-inline-contact {
+    margin-top: 16px !important;
+  }
+}

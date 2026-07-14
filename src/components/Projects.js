@@ -61,9 +61,6 @@ export default function Projects() {
         <div className="section-head">
           <span className="eyebrow">04 · Proyek</span>
           <h2 className="section-title">Pengembangan website</h2>
-          <p className="section-copy">
-            Proyek aplikasi web yang berfokus pada pengelolaan data, monitoring proses, dan kebutuhan operasional.
-          </p>
         </div>
 
         <motion.div className="project-grid" layout>
