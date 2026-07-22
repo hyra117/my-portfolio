@@ -151,15 +151,15 @@ export default function Header({ onNavigate }) {
             onClick={() => setShowCvModal(false)}
             style={{
               position: "fixed",
-              top: "88px",
+              top: "78px",
               left: 0,
               right: 0,
-              bottom: 0,
-              zIndex: 900,
-              padding: "12px 20px 24px",
+              bottom: "50px",
+              zIndex: 950,
+              padding: "10px 14px",
               display: "flex",
               justifyContent: "center",
-              alignItems: "flex-start",
+              alignItems: "center",
             }}
           >
             <motion.div
@@ -171,14 +171,15 @@ export default function Header({ onNavigate }) {
               onClick={(e) => e.stopPropagation()}
               style={{
                 maxWidth: "880px",
-                width: "94%",
-                height: "calc(100vh - 125px)",
+                width: "96%",
+                maxHeight: "calc(100vh - 140px)",
+                height: "100%",
                 padding: 0,
                 overflow: "hidden",
                 display: "flex",
                 flexDirection: "column",
                 background: "#ffffff",
-                borderRadius: "20px",
+                borderRadius: "18px",
                 boxShadow: "0 24px 60px rgba(16, 42, 67, 0.22)",
               }}
             >
