@@ -124,7 +124,6 @@ export default function BackgroundDecorations({ activeSection = "home" }) {
         zIndex: 1,
       }}
     >
-      {}
       <AnimatePresence mode="wait">
         <motion.div
           key={`orbs-${activeSection}`}
@@ -152,7 +151,6 @@ export default function BackgroundDecorations({ activeSection = "home" }) {
         </motion.div>
       </AnimatePresence>
 
-      {}
       <AnimatePresence mode="wait">
         <motion.div
           key={`particles-${activeSection}`}
@@ -190,7 +188,6 @@ export default function BackgroundDecorations({ activeSection = "home" }) {
         </motion.div>
       </AnimatePresence>
 
-      {}
       <AnimatePresence mode="wait">
         <motion.div key={`genz-${activeSection}`} style={{ position: "absolute", inset: 0 }}>
           {widgets.map((widget, index) => (

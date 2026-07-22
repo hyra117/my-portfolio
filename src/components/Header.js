@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.css";
-import { ArrowDown, Download, Sparkles, Code2, CheckCircle2 } from "lucide-react";
-import { motion } from "framer-motion";
+import { ArrowDown, Download, Eye, Sparkles, Code2, CheckCircle2, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const textVariants = {
   hidden: { opacity: 0, y: 24 },
@@ -23,6 +23,8 @@ const floatAnimation = {
 };
 
 export default function Header({ onNavigate }) {
+  const [showCvModal, setShowCvModal] = useState(false);
+
   return (
     <header id="home" className="hero">
       <div className="hero-inner">
@@ -62,12 +64,22 @@ export default function Header({ onNavigate }) {
             >
               Lihat proyek <ArrowDown size={17} />
             </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.04, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              type="button"
+              className="secondary-btn"
+              onClick={() => setShowCvModal(true)}
+            >
+              <Eye size={17} /> Preview CV
+            </motion.button>
             <motion.a
               whileHover={{ scale: 1.04, y: -2 }}
               whileTap={{ scale: 0.98 }}
               href="/document/CV - RACHMA PAVITA.pdf"
               download
               className="secondary-btn"
+              style={{ background: "rgba(61, 139, 253, 0.08)", borderColor: "rgba(61, 139, 253, 0.25)", color: "var(--blue)" }}
             >
               <Download size={17} /> Unduh CV
             </motion.a>
@@ -96,6 +108,46 @@ export default function Header({ onNavigate }) {
           />
         </motion.div>
       </div>
+
+      <AnimatePresence>
+        {showCvModal && (
+          <div className="modal-backdrop" onClick={() => setShowCvModal(false)}>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.92, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.92, y: 20 }}
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              className="modal-panel cv-modal-panel"
+              onClick={(e) => e.stopPropagation()}
+              style={{ maxWidth: "850px", width: "92%", height: "85vh", padding: 0, overflow: "hidden", display: "flex", flexDirection: "column", background: "#ffffff", borderRadius: "20px" }}
+            >
+              <div style={{ padding: "16px 22px", display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: "1px solid var(--border)", background: "#ffffff" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                  <Eye size={18} color="var(--blue)" />
+                  <strong style={{ fontSize: "16px", color: "var(--text)" }}>Pratinjau CV - Rachma Pavita</strong>
+                </div>
+                <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                  <a href="/document/CV - RACHMA PAVITA.pdf" download className="primary-btn" style={{ padding: "8px 14px", fontSize: "13px", display: "inline-flex", alignItems: "center", gap: "6px" }}>
+                    <Download size={15} /> Unduh PDF
+                  </a>
+                  <button onClick={() => setShowCvModal(false)} style={{ background: "none", border: 0, cursor: "pointer", color: "var(--muted)", padding: "4px" }}>
+                    <X size={20} />
+                  </button>
+                </div>
+              </div>
+              <div style={{ flex: 1, background: "#f8fafc", width: "100%", height: "100%" }}>
+                <iframe
+                  src="/document/CV - RACHMA PAVITA.pdf#toolbar=0"
+                  title="Pratinjau CV Rachma Pavita"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                />
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

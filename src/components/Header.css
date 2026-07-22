@@ -130,7 +130,6 @@
     padding: 14px;
 }
 
-/* Layer Offset Kiri Atas (Soft Cyan Blue) */
 .portrait-backdrop-tl {
     position: absolute;
     top: -4px;
@@ -143,7 +142,6 @@
     pointer-events: none;
 }
 
-/* Layer Offset Kanan Bawah (Soft Lavender Blue) */
 .portrait-backdrop-br {
     position: absolute;
     top: 20px;
