@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Header.css";
-import { ArrowDown, Download, Eye, Sparkles, Code2, CheckCircle2, X, Globe } from "lucide-react";
+import { ArrowDown, Download, Eye, Sparkles, Code2, CheckCircle2, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "../LanguageContext";
 
