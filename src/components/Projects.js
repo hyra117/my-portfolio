@@ -137,31 +137,83 @@ export default function Projects() {
 
       <AnimatePresence>
         {selected && (
-          <motion.div className="modal-backdrop" onClick={() => setSelected(null)} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-            <motion.div className="project-modal" onClick={(event) => event.stopPropagation()} initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 30, opacity: 0 }}>
-              <div className="modal-image-stage">
-                <AnimatePresence mode="wait">
-                  <motion.img key={activeImage} className="modal-cover" src={activeImage} alt={selected.name} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} />
-                </AnimatePresence>
-              </div>
-              <div className="modal-body">
-                <div className="project-title-row">
-                  <div>
-                    <span className="modal-category">{lang === "en" ? selected.categoryEn : selected.categoryId}</span>
-                    <div className="modal-title-actions">
-                      <h2>{selected.name}</h2>
-                    </div>
-                  </div>
-                  <button className="mini-play" onClick={() => setSelected(null)} aria-label="Tutup"><X size={17} /></button>
+          <motion.div
+            className="modal-backdrop"
+            onClick={() => setSelected(null)}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            style={{
+              position: "fixed",
+              top: "78px",
+              left: 0,
+              right: 0,
+              bottom: "50px",
+              zIndex: 950,
+              padding: "10px 14px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <motion.div
+              className="project-modal"
+              onClick={(event) => event.stopPropagation()}
+              initial={{ y: 20, opacity: 0, scale: 0.96 }}
+              animate={{ y: 0, opacity: 1, scale: 1 }}
+              exit={{ y: 20, opacity: 0, scale: 0.96 }}
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+            >
+              <div className="project-modal-header">
+                <div className="modal-header-title">
+                  <span className="modal-category">{lang === "en" ? selected.categoryEn : selected.categoryId}</span>
+                  <h2>{selected.name}</h2>
                 </div>
-                <p>{lang === "en" ? selected.descriptionEn : selected.descriptionId}</p>
-                <div className="tag-list">{selected.tools.map((tool) => <span className="tag" key={tool}>{tool}</span>)}</div>
-                <div className="modal-gallery">
-                  {selected.images.map((image, index) => (
-                    <button className={`gallery-thumb ${activeImage === image ? "active" : ""}`} key={image} onClick={() => setActiveImage(image)}>
-                      <img src={image} alt={`${selected.name} tampilan ${index + 1}`} />
-                    </button>
-                  ))}
+                <button className="modal-close-btn" onClick={() => setSelected(null)} aria-label="Tutup">
+                  <X size={20} />
+                </button>
+              </div>
+
+              <div className="project-modal-scroll-area">
+                <div className="modal-image-stage">
+                  <AnimatePresence mode="wait">
+                    <motion.img
+                      key={activeImage}
+                      className="modal-cover"
+                      src={activeImage}
+                      alt={selected.name}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                    />
+                  </AnimatePresence>
+                </div>
+
+                <div className="modal-body">
+                  <p>{lang === "en" ? selected.descriptionEn : selected.descriptionId}</p>
+
+                  <div className="tag-list">
+                    {selected.tools.map((tool) => (
+                      <span className="tag" key={tool}>{tool}</span>
+                    ))}
+                  </div>
+
+                  <div style={{ marginTop: "14px", marginBottom: "8px" }}>
+                    <small style={{ fontSize: "11px", fontWeight: 700, color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                      {lang === "en" ? `Screenshots (${selected.images.length})` : `Tampilan Layar (${selected.images.length})`}
+                    </small>
+                  </div>
+                  <div className="modal-gallery">
+                    {selected.images.map((image, index) => (
+                      <button
+                        className={`gallery-thumb ${activeImage === image ? "active" : ""}`}
+                        key={image}
+                        onClick={() => setActiveImage(image)}
+                      >
+                        <img src={image} alt={`${selected.name} tampilan ${index + 1}`} />
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </div>
             </motion.div>
