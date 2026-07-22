@@ -48,6 +48,7 @@
     position: relative;
     overflow: hidden;
     height: 220px;
+    aspect-ratio: 4/5;
     border-radius: 16px;
     border: 1px solid var(--border);
     background: var(--surface);
@@ -144,11 +145,23 @@
     .about-intro {
         padding: 24px;
     }
+
+    .about-photo {
+        height: auto;
+        aspect-ratio: 4/5;
+    }
 }
 
 @media (max-width: 600px) {
     .about-photo-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .about-photo {
+        height: auto;
+        aspect-ratio: 4/5;
+        border-radius: 14px;
     }
 
     .about-intro {
@@ -156,10 +169,11 @@
     }
 
     .contact-chip {
-        font-size: 13px;
+        font-size: 12px;
+        padding: 9px 12px;
     }
 
     .contact-chip small {
-        font-size: 10px;
+        font-size: 9px;
     }
 }

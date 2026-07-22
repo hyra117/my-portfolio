@@ -96,8 +96,9 @@ p {
   justify-content: flex-start;
   align-items: center;
   padding-top: 100px;
-  padding-bottom: 50px;
+  padding-bottom: 80px;
   overflow-y: auto;
+  scroll-behavior: smooth;
 }
 
 .page-switcher {
@@ -214,9 +215,14 @@ p {
 }
 
 @media (max-width: 768px) {
+  .content-shell {
+    padding-top: 85px;
+    padding-bottom: 95px;
+  }
+
   .page-section,
   .page-section.alt {
-    padding: 40px 20px;
+    padding: 24px 18px 45px;
   }
 
   .section-inner {
@@ -224,8 +230,8 @@ p {
   }
 
   .hero {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 18px;
+    padding-right: 18px;
   }
 }
 
