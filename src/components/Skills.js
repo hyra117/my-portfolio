@@ -2,6 +2,7 @@ import React from "react";
 import "./Skills.css";
 import { Code2, Database, Wrench, ShieldCheck, Award } from "lucide-react";
 import { motion } from "framer-motion";
+import { useLanguage } from "../LanguageContext";
 
 const groups = [
   {
@@ -70,6 +71,8 @@ const skillLogos = {
 };
 
 export default function Skills() {
+  const { t } = useLanguage();
+
   return (
     <section id="skills" className="page-section">
       <div className="section-inner">
@@ -80,8 +83,8 @@ export default function Skills() {
           viewport={{ once: true }}
           className="section-head"
         >
-          <span className="eyebrow">05 · Keahlian</span>
-          <h2 className="section-title">Kompetensi dan sertifikasi</h2>
+          <span className="eyebrow">{t.skills.eyebrow}</span>
+          <h2 className="section-title">{t.skills.title}</h2>
         </motion.div>
 
         <motion.div

@@ -1,36 +1,52 @@
 import React from "react";
 import "./Organization.css";
 import { motion } from "framer-motion";
+import { useLanguage } from "../LanguageContext";
 
-const organizations = [
+const rawOrganizations = [
   {
-    role: "Divisi Utama",
-    organization: "Korps Instruktur Cabang Jakarta Timur",
-    date: "Sep 2023 - Des 2025",
+    roleId: "Divisi Utama",
+    roleEn: "Main Division Member",
+    orgId: "Korps Instruktur Cabang Jakarta Timur",
+    orgEn: "East Jakarta Branch Instructor Corps",
+    dateId: "Sep 2023 - Des 2025",
+    dateEn: "Sep 2023 - Dec 2025",
     logo: "/images/organisasi/logo imm.png",
   },
   {
-    role: "Bendahara Umum",
-    organization: "PC IMM Jakarta Timur",
-    date: "Nov 2024 - Nov 2025",
+    roleId: "Bendahara Umum",
+    roleEn: "Treasurer General",
+    orgId: "PC IMM Jakarta Timur",
+    orgEn: "PC IMM East Jakarta",
+    dateId: "Nov 2024 - Nov 2025",
+    dateEn: "Nov 2024 - Nov 2025",
     logo: "/images/organisasi/logo imm.png",
   },
   {
-    role: "Sekretaris Kementerian Keuangan",
-    organization: "BEM UHAMKA",
-    date: "Des 2023 - Sep 2024",
+    roleId: "Sekretaris Kementerian Keuangan",
+    roleEn: "Secretary of Finance Ministry",
+    orgId: "BEM UHAMKA",
+    orgEn: "BEM UHAMKA",
+    dateId: "Des 2023 - Sep 2024",
+    dateEn: "Dec 2023 - Sep 2024",
     logo: "/images/organisasi/logo ftii uhamka.png",
   },
   {
-    role: "Kepala Bidang Komunikasi dan Informasi",
-    organization: "BEM FTII UHAMKA",
-    date: "Des 2022 - Okt 2023",
+    roleId: "Kepala Bidang Komunikasi dan Informasi",
+    roleEn: "Head of Communication & Information",
+    orgId: "BEM FTII UHAMKA",
+    orgEn: "BEM FTII UHAMKA",
+    dateId: "Des 2022 - Okt 2023",
+    dateEn: "Dec 2022 - Oct 2023",
     logo: "/images/organisasi/logo ftii uhamka.png",
   },
   {
-    role: "Sekretaris Umum",
-    organization: "PK IMM FTII UHAMKA",
-    date: "Feb 2022 - Agu 2023",
+    roleId: "Sekretaris Umum",
+    roleEn: "Secretary General",
+    orgId: "PK IMM FTII UHAMKA",
+    orgEn: "PK IMM FTII UHAMKA",
+    dateId: "Feb 2022 - Agu 2023",
+    dateEn: "Feb 2022 - Aug 2023",
     logo: "/images/organisasi/logo imm.png",
   },
 ];
@@ -51,6 +67,8 @@ const itemVariants = {
 };
 
 export default function Organization() {
+  const { lang, t } = useLanguage();
+
   return (
     <section id="organization" className="page-section alt">
       <div className="section-inner">
@@ -61,8 +79,8 @@ export default function Organization() {
           viewport={{ once: true }}
           className="section-head"
         >
-          <span className="eyebrow">03 · Organisasi</span>
-          <h2 className="section-title">Kolaborasi</h2>
+          <span className="eyebrow">{t.organization.eyebrow}</span>
+          <h2 className="section-title">{t.organization.title}</h2>
         </motion.div>
 
         <div className="organization-layout">
@@ -73,25 +91,31 @@ export default function Organization() {
             viewport={{ once: true }}
             className="organization-list"
           >
-            {organizations.map((item, index) => (
-              <motion.article
-                variants={itemVariants}
-                whileHover={{ y: -6, scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="organization-item"
-                key={`${item.role}-${item.organization}`}
-              >
-                <div className="organization-card-head">
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <img src={item.logo} alt={`Logo ${item.organization}`} />
-                </div>
-                <div className="organization-content">
-                  <h3>{item.role}</h3>
-                  <strong>{item.organization}</strong>
-                  <small>{item.date}</small>
-                </div>
-              </motion.article>
-            ))}
+            {rawOrganizations.map((item, index) => {
+              const role = lang === "en" ? item.roleEn : item.roleId;
+              const org = lang === "en" ? item.orgEn : item.orgId;
+              const date = lang === "en" ? item.dateEn : item.dateId;
+
+              return (
+                <motion.article
+                  variants={itemVariants}
+                  whileHover={{ y: -6, scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  className="organization-item"
+                  key={`${item.roleId}-${item.orgId}`}
+                >
+                  <div className="organization-card-head">
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    <img src={item.logo} alt={`Logo ${org}`} />
+                  </div>
+                  <div className="organization-content">
+                    <h3>{role}</h3>
+                    <strong>{org}</strong>
+                    <small>{date}</small>
+                  </div>
+                </motion.article>
+              );
+            })}
           </motion.div>
         </div>
       </div>

@@ -2,6 +2,7 @@ import React from "react";
 import "./About.css";
 import { Mail, MapPin, Linkedin, Github } from "lucide-react";
 import { motion } from "framer-motion";
+import { useLanguage } from "../LanguageContext";
 
 const photos = [
   ["/images/photo/1.jpg", "Momen kelulusan"],
@@ -10,14 +11,16 @@ const photos = [
   ["/images/photo/4.jpeg", "Dokumentasi kegiatan"],
 ];
 
-const contacts = [
-  [MapPin, "Lokasi", "Bekasi, Jawa Barat", null],
-  [Mail, "Email", "rahmapavita12@gmail.com", "mailto:rahmapavita12@gmail.com"],
-  [Linkedin, "LinkedIn", "rahma-pavita", "https://www.linkedin.com/in/rahma-pavita"],
-  [Github, "GitHub", "hyra117", "https://github.com/hyra117"],
-];
-
 export default function About() {
+  const { t } = useLanguage();
+
+  const contacts = [
+    [MapPin, "Lokasi", t.about.location, null],
+    [Mail, "Email", "rahmapavita12@gmail.com", "mailto:rahmapavita12@gmail.com"],
+    [Linkedin, "LinkedIn", "rahma-pavita", "https://www.linkedin.com/in/rahma-pavita"],
+    [Github, "GitHub", "hyra117", "https://github.com/hyra117"],
+  ];
+
   return (
     <section id="about" className="page-section alt">
       <div className="section-inner">
@@ -28,8 +31,8 @@ export default function About() {
           viewport={{ once: true }}
           className="section-head"
         >
-          <span className="eyebrow">01 · Profil</span>
-          <h2 className="section-title">TENTANG SAYA</h2>        
+          <span className="eyebrow">{t.about.eyebrow}</span>
+          <h2 className="section-title">{t.about.title}</h2>        
         </motion.div>
 
         <div className="about-simple-grid">
@@ -41,12 +44,8 @@ export default function About() {
             className="about-intro"
           >
             <div className="about-description-text">
-              <p>
-                Lulusan Sarjana Teknik Informatika dengan ketertarikan pada pengembangan aplikasi berbasis web dan implementasi solusi digital yang mendukung kebutuhan operasional maupun bisnis. Lingkup pekerjaan meliputi proses pengembangan aplikasi dari tahap identifikasi kebutuhan, perancangan sistem, pengembangan, pengujian, implementasi, hingga pemeliharaan aplikasi sebagai bagian dari siklus pengembangan perangkat lunak.
-              </p>
-              <p>
-                Memiliki ketertarikan pada pengembangan perangkat lunak yang menghasilkan solusi digital yang fungsional, mudah digunakan, dan berkelanjutan, serta mendukung peningkatan kualitas layanan, efisiensi operasional, dan transformasi proses bisnis di lingkungan organisasi.
-              </p>
+              <p>{t.about.p1}</p>
+              <p>{t.about.p2}</p>
             </div>
 
             <div className="about-inline-contact">

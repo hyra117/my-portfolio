@@ -10,6 +10,8 @@ import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import BackgroundDecorations from "./components/BackgroundDecorations";
 
+import { LanguageProvider } from "./LanguageContext";
+
 const pages = {
   home: Header,
   about: About,
@@ -19,7 +21,7 @@ const pages = {
   skills: Skills,
 };
 
-export default function App() {
+function MainApp() {
   const [activeSection, setActiveSection] = useState("home");
   const ActivePage = pages[activeSection] || Header;
 
@@ -49,5 +51,13 @@ export default function App() {
       </div>
       <footer className="footer">© 2026 Rachma Pavita · Portfolio</footer>
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <LanguageProvider>
+      <MainApp />
+    </LanguageProvider>
   );
 }
