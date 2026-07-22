@@ -1,4 +1,19 @@
 import React from "react";
+import { motion } from "framer-motion";
+import "./Experience.css";
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.12,
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  }),
+};
 
 const experiences = [
   {
@@ -59,7 +74,15 @@ export default function Experience() {
         </div>
         <div className="experience-grid">
           {experiences.map((experience, index) => (
-            <article className={`card experience-card ${index === 0 ? "featured" : ""}`} key={`${experience.company}-${experience.role}`}>
+            <motion.article
+              className={`card experience-card ${index === 0 ? "featured" : ""}`}
+              key={`${experience.company}-${experience.role}`}
+              custom={index}
+              initial="hidden"
+              animate="visible"
+              whileHover={{ y: -6, transition: { duration: 0.2 } }}
+              variants={cardVariants}
+            >
               <div className="experience-card-header">
                 <div className="experience-identity">
                   <span className={`company-mark company-mark-${index + 1}`} aria-label={experience.company}>
@@ -88,10 +111,9 @@ export default function Experience() {
                   ))}
                 </ul>
               </div>
-            </article>
+            </motion.article>
           ))}
         </div>
-
       </div>
     </section>
   );

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Sidebar.css";
 import { Home, UserRound, BriefcaseBusiness, UsersRound, FolderKanban, Sparkles, Menu, X } from "lucide-react";
 
 const items = [

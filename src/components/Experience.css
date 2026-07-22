@@ -1,0 +1,207 @@
+.experience-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    align-items: stretch;
+}
+
+.experience-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 18px 20px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 4px 16px rgba(16, 42, 67, 0.04);
+    transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+
+.experience-card:hover {
+    border-color: rgba(61, 139, 253, .35);
+    box-shadow: 0 12px 28px rgba(16, 42, 67, .08);
+}
+
+.experience-card.featured {
+    border-color: rgba(61, 139, 253, .35);
+    box-shadow: 0 14px 30px rgba(61, 139, 253, .08);
+}
+
+.experience-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.experience-identity {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+.company-mark {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.company-mark-1 {
+    background: #2563eb;
+}
+
+.company-mark-2 {
+    background: #0284c7;
+}
+
+.company-mark-3 {
+    background: #0d9488;
+}
+
+.company-mark-4 {
+    background: #7c3aed;
+}
+
+.experience-title-block {
+    min-width: 0;
+}
+
+.experience-title-block h3 {
+    margin: 0 0 2px;
+    font-family: "Manrope", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--text);
+}
+
+.company {
+    color: var(--muted);
+    font-size: 12.5px;
+    line-height: 1.4;
+}
+
+.experience-side-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex-shrink: 0;
+}
+
+.experience-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.experience-status.contract {
+    color: var(--blue-strong);
+    background: rgba(61, 139, 253, .12);
+    border: 1px solid rgba(61, 139, 253, .2);
+}
+
+.experience-status.internship {
+    color: #11875d;
+    background: rgba(65, 201, 155, .12);
+    border: 1px solid rgba(65, 201, 155, .2);
+}
+
+.date {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+.experience-card-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.experience-divider {
+    width: 100%;
+    height: 1px;
+    margin-bottom: 10px;
+    background: var(--border);
+    border-radius: 999px;
+}
+
+.experience-points {
+    margin: 0;
+    padding-left: 18px;
+    color: var(--muted);
+    font-size: 12.5px;
+    line-height: 1.55;
+}
+
+.experience-points li + li {
+    margin-top: 6px;
+}
+
+@media (max-width: 768px) {
+    .experience-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .experience-card {
+        padding: 22px;
+    }
+
+    .experience-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+    }
+
+    .experience-side-meta {
+        align-items: flex-start;
+    }
+
+    .date {
+        white-space: normal;
+    }
+}
+
+@media (max-width: 480px) {
+    .experience-card {
+        padding: 18px;
+        gap: 18px;
+    }
+
+    .experience-identity {
+        gap: 12px;
+    }
+
+    .company-mark {
+        width: 46px;
+        height: 46px;
+        font-size: 16px;
+    }
+
+    .experience-title-block h3 {
+        font-size: 18px;
+    }
+
+    .company,
+    .date {
+        font-size: 13px;
+    }
+
+    .experience-points {
+        padding-left: 18px;
+        font-size: 14px;
+    }
+}

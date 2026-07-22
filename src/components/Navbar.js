@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Navbar.css";
 import { BriefcaseBusiness, FolderKanban, Home, Menu, Sparkles, UserRound, UsersRound, X } from "lucide-react";
 
 const items = [

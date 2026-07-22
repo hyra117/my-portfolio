@@ -1,0 +1,283 @@
+.top-navbar {
+    position: fixed;
+    top: 14px;
+    left: clamp(16px, 4vw, 48px);
+    right: clamp(16px, 4vw, 48px);
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+
+    min-height: var(--navbar-height);
+    padding: 12px 16px;
+
+    border: 1px solid rgba(61,139,253,.18);
+    border-radius: 24px;
+
+    background: rgba(255, 255, 255, 0.95);
+
+    backdrop-filter: blur(16px);
+
+    box-shadow:
+        0 10px 28px rgba(18,50,74,.08),
+        inset 0 1px 0 rgba(255,255,255,.9);
+}
+
+/* ===========================
+   BRAND
+=========================== */
+
+.navbar-brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    flex-shrink:0;
+
+    color:inherit;
+    text-decoration:none;
+}
+
+.navbar-brand span:last-child{
+    display:flex;
+    flex-direction:column;
+    line-height:1.2;
+}
+
+.navbar-brand strong{
+    font-size:15px;
+    font-weight:800;
+    color:var(--text);
+}
+
+.navbar-brand small{
+    font-size:11px;
+    color:var(--muted);
+}
+
+.navbar-photo{
+    width:42px;
+    height:42px;
+
+    overflow:hidden;
+    border-radius:50%;
+
+    border:2px solid rgba(61,139,253,.34);
+
+    background: var(--blue);
+
+    flex-shrink:0;
+}
+
+.navbar-photo img{
+    width:100%;
+    height:100%;
+    display:block;
+
+    object-fit:cover;
+    object-position:50% 27%;
+
+    transform:scaleX(-1) scale(1.22);
+}
+
+/* ===========================
+   MENU
+=========================== */
+
+.navbar-menu{
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+
+    flex:1;
+
+    gap:6px;
+}
+
+.navbar-item{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+
+    min-height:42px;
+
+    padding:0 14px;
+
+    border-radius:999px;
+    border:1px solid transparent;
+
+    background:transparent;
+
+    color:var(--muted);
+
+    font-size:12px;
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:
+        background .25s,
+        border-color .25s,
+        color .25s,
+        transform .25s;
+}
+
+.navbar-item:hover{
+    transform:translateY(-1px);
+}
+
+.navbar-item:hover,
+.navbar-item.active{
+
+    color:var(--blue-strong);
+
+    border-color:rgba(61,139,253,.2);
+
+    background: rgba(61, 139, 253, 0.12);
+}
+
+/* ===========================
+   TOGGLE
+=========================== */
+
+.navbar-toggle{
+    display:none;
+
+    width:42px;
+    height:42px;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:12px;
+    border:1px solid var(--border);
+
+    background:#fff;
+
+    cursor:pointer;
+
+    color:var(--text);
+
+    transition:.25s;
+}
+
+.navbar-toggle:hover{
+    background:rgba(61,139,253,.08);
+}
+
+/* ===========================
+   MOBILE MENU OPEN
+=========================== */
+
+.navbar-menu.open{
+    opacity:1;
+    pointer-events:auto;
+    transform:translateY(0);
+}
+
+/* ===========================
+   TABLET
+=========================== */
+
+@media (max-width:1024px){
+
+    .top-navbar{
+        left:20px;
+        right:20px;
+    }
+
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media (max-width:768px){
+
+    .top-navbar{
+
+        left:16px;
+        right:16px;
+
+        padding:10px 12px;
+    }
+
+    .navbar-brand strong,
+    .navbar-brand small{
+        display:none;
+    }
+
+    .navbar-toggle{
+        display:flex;
+    }
+
+    .navbar-menu{
+
+        position:absolute;
+
+        top:calc(100% + 12px);
+        left:0;
+        right:0;
+
+        flex-direction:column;
+        align-items:stretch;
+
+        gap:8px;
+
+        padding:14px;
+
+        border-radius:18px;
+        border:1px solid var(--border);
+
+        background:rgba(255,255,255,.97);
+
+        backdrop-filter:blur(18px);
+
+        opacity:0;
+        pointer-events:none;
+
+        transform:translateY(-12px);
+
+        transition:.28s;
+    }
+
+    .navbar-item{
+
+        width:100%;
+
+        justify-content:center;
+
+        padding:12px;
+    }
+
+}
+
+/* ===========================
+   SMALL PHONE
+=========================== */
+
+@media (max-width:480px){
+
+    .top-navbar{
+
+        left:12px;
+        right:12px;
+
+        border-radius:18px;
+    }
+
+    .navbar-photo{
+
+        width:38px;
+        height:38px;
+    }
+
+    .navbar-toggle{
+
+        width:38px;
+        height:38px;
+    }
+
+}

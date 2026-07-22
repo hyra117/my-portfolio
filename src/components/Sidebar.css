@@ -1,0 +1,146 @@
+.side-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    width: 260px;
+    padding: 18px;
+    border: 1px solid rgba(61, 139, 253, .12);
+    border-radius: 18px;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, .92),
+        rgba(245, 248, 255, .92)
+    );
+    box-shadow: 0 20px 36px rgba(8, 25, 40, .06);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-photo {
+    width: 52px;
+    height: 52px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+.nav-list {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    background: transparent;
+    color: var(--muted);
+    font-weight: 700;
+    cursor: pointer;
+    transition: .25s ease;
+}
+
+.nav-item.active {
+    border-color: rgba(61, 139, 253, .07);
+    background: linear-gradient(
+        135deg,
+        rgba(61, 139, 253, .07),
+        rgba(138, 124, 246, .05)
+    );
+    color: var(--blue-strong);
+}
+
+.nav-active-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 38px;
+    border-radius: 6px;
+    background: linear-gradient(180deg, var(--blue), var(--cyan));
+    transition: transform .28s cubic-bezier(.2, .9, .4, 1);
+}
+
+.mobile-toggle {
+    display: none;
+}
+
+.mobile-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    background: rgba(9, 21, 33, .56);
+}
+
+.side-status {
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, .76);
+    color: var(--muted);
+    font-size: 13px;
+}
+
+@media (max-width: 1024px) {
+    .side-nav {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .side-nav {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 280px;
+        height: 100vh;
+        z-index: 100;
+        overflow-y: auto;
+        border-radius: 0;
+        transition: left .3s ease;
+    }
+
+    .side-nav.open {
+        left: 0;
+    }
+
+    .mobile-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .brand {
+        margin-bottom: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .side-nav {
+        width: 100%;
+        padding: 16px;
+    }
+
+    .nav-item {
+        padding: 10px;
+    }
+
+    .brand-photo {
+        width: 46px;
+        height: 46px;
+    }
+
+    .side-status {
+        padding: 14px;
+        font-size: 12px;
+    }
+}

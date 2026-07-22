@@ -8,6 +8,7 @@ import Experience from "./components/Experience";
 import Organization from "./components/Organization";
 import Projects from "./components/Projects";
 import Skills from "./components/Skills";
+import BackgroundDecorations from "./components/BackgroundDecorations";
 
 const pages = {
   home: Header,
@@ -28,6 +29,7 @@ export default function App() {
 
   return (
     <div className="app-shell single-page-shell">
+      <BackgroundDecorations activeSection={activeSection} />
       <Navbar activeSection={activeSection} setActiveSection={changePage} />
       <div className="content-shell">
         <main className="page-switcher">

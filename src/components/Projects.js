@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Play, X } from "lucide-react";
+import "./Projects.css";
 
 const projects = [
   {
@@ -14,20 +15,20 @@ const projects = [
       "/images/projects/website/sib-uhamka/sib-uhamka3.png",
       "/images/projects/website/sib-uhamka/sib-uhamka4.png",
     ],
-    liveUrl: "https://sib-demo.up.railway.app/",
     tools: ["Laravel", "PHP", "Bootstrap", "MySQL"],
   },
   {
     name: "Tally HBT",
     category: "Website Project",
     description:
-      "Sistem pencatatan dan monitoring waktu curah cair untuk mendukung operasional, pelaporan, dan analisis data.",
-    liveUrl: "https://demo-wflo.up.railway.app/",
+      "Sistem pencatatan dan monitoring waktu curah cair untuk mendukung pelaporan dan analisis data.",
     images: [
-      "/images/projects/website/tally-hbt/tally-hbt1.jpeg",
-      "/images/projects/website/tally-hbt/tally-hbt2.jpeg",
-      "/images/projects/website/tally-hbt/tally-hbt3.jpeg",
-      "/images/projects/website/tally-hbt/tally-hbt4.jpeg",
+      "/images/projects/website/tally-hbt/tally-hbt1.png",
+      "/images/projects/website/tally-hbt/tally-hbt2.png",
+      "/images/projects/website/tally-hbt/tally-hbt3.png",
+      "/images/projects/website/tally-hbt/tally-hbt4.png",
+      "/images/projects/website/tally-hbt/tally-hbt5.png",
+      "/images/projects/website/tally-hbt/tally-hbt6.png",
     ],
     tools: ["Laravel", "PHP", "Bootstrap", "MySQL"],
   },
@@ -45,6 +46,20 @@ const projects = [
     ],
     tools: ["Django", "Python", "Bootstrap", "PostgreSQL"],
   },
+  {
+    name: "SIMOPER KIC Jaktim",
+    category: "Website Project",
+    description:
+      "Sistem monitoring perkaderan korps instruktur cabang jakarta timur untuk mengelola pendaftaran, penugasan, dan pelaporan secara terstruktur.",
+    images: [
+      "/images/projects/website/simoper/KIC1.png",
+      "/images/projects/website/simoper/KIC2.png",
+      "/images/projects/website/simoper/KIC3.png",
+      "/images/projects/website/simoper/KIC4.png",
+      "/images/projects/website/simoper/KIC5.png"
+    ],
+    tools: ["ASP.NET", "C#", "Tailwind CSS", "PostgreSQL"],
+  },
 ];
 
 export default function Projects() {
@@ -58,19 +73,27 @@ export default function Projects() {
   return (
     <section id="projects" className="page-section alt">
       <div className="section-inner">
-        <div className="section-head">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="section-head"
+        >
           <span className="eyebrow">04 · Proyek</span>
           <h2 className="section-title">Pengembangan website</h2>
-        </div>
+        </motion.div>
 
         <motion.div className="project-grid" layout>
           <AnimatePresence mode="popLayout">
             {projects.map((project) => (
               <motion.article
                 layout
-                initial={{ opacity: 0, y: 12 }}
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 12 }}
+                exit={{ opacity: 0, y: 16 }}
+                whileHover={{ y: -6, scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 className="card project-card"
                 key={project.name}
                 onClick={() => setSelected(project)}
@@ -108,11 +131,6 @@ export default function Projects() {
                     <span className="modal-category">{selected.category}</span>
                     <div className="modal-title-actions">
                       <h2>{selected.name}</h2>
-                      {selected.liveUrl && (
-                        <a className="project-live-link" href={selected.liveUrl} target="_blank" rel="noreferrer">
-                          Buka Demo
-                        </a>
-                      )}
                     </div>
                   </div>
                   <button className="mini-play" onClick={() => setSelected(null)} aria-label="Tutup"><X size={17} /></button>

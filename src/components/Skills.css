@@ -1,0 +1,130 @@
+.skill-groups {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    width: 100%;
+    max-width: 100%;
+}
+
+.skill-group {
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: #ffffff;
+    transition: .3s ease;
+}
+
+.skill-group h3 {
+    font-family: "Manrope", sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--text);
+    margin: 0 0 4px;
+}
+
+.skill-group:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 28px rgba(16, 42, 67, .08);
+}
+
+.skill-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 12px;
+}
+
+.skill-pills span {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 12px;
+    border: 1px solid rgba(61, 139, 253, 0.22);
+    border-radius: 999px;
+    background: rgba(61, 139, 253, 0.08);
+    color: var(--blue-strong);
+    font-size: 12px;
+    font-weight: 800;
+    transition: all 0.25s ease;
+    cursor: default;
+}
+
+.skill-pills span:hover {
+    background: var(--blue);
+    color: #ffffff;
+    border-color: var(--blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(61, 139, 253, 0.22);
+}
+
+.certification-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-top: 22px;
+    width: 100%;
+    max-width: 100%;
+}
+
+.certification-card {
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, .88);
+    transition: .3s ease;
+}
+
+.certification-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(16, 42, 67, .08);
+}
+
+.certification-card span {
+    display: inline-block;
+    margin-bottom: 8px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: rgba(61, 139, 253, .1);
+    color: var(--blue);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}
+
+.certification-card strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.4;
+}
+
+.certification-card small {
+    display: block;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+@media (max-width: 768px) {
+    .skill-groups,
+    .certification-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skill-group,
+    .certification-card {
+        padding: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .skill-pills span {
+        padding: 7px 9px;
+        font-size: 12px;
+    }
+
+    .skill-group,
+    .certification-card {
+        padding: 14px;
+    }
+}
